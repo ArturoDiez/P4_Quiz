@@ -1,6 +1,6 @@
-const {log, biglog, errorlog, colorize} = require("C:/Users/Arturo/Desktop/QUIZP2/out.js");
+const {log, biglog, errorlog, colorize} = require("./out.js");
 
-const model = require ('C:/Users/Arturo/Desktop/QUIZP2/model.js');
+const model = require ('./model.js');
 
 /**
 *Muestra la ayuda
@@ -178,7 +178,7 @@ exports.helpCmd = rl => {
         }
         const playOne = () => {
 
-          if (toBeResolved.length === 0){
+          if (toBeResolved.length <= 0){
         	log(`No hay nada más que preguntar`);
         	log(`Fin del juego. El número de aciertos es ` + score);
         	rl.prompt();
@@ -194,7 +194,7 @@ exports.helpCmd = rl => {
    	            	answer = answer.charAt(0).toUpperCase() + answer.slice(1);
    	            	if(answer === quiz.answer){
    	                   score++;
-   	                   log(`CORRECTO - Lleva `+ score +`aciertos`);
+   	                   log(`CORRECTO - Llevas `+ score +` aciertos`);
                        playOne();
    	               } else {
    	               	   log(`INCORRECTO`);

@@ -1,9 +1,9 @@
 const readline = require('readline');
-const model = require("C:/Users/Arturo/Desktop/QUIZP2/model.js");
+const model = require("./model.js");
 
-const {log, biglog, errorlog, colorize} = require("C:/Users/Arturo/Desktop/QUIZP2/out.js");
+const {log, biglog, errorlog, colorize} = require("./out.js");
 
-const cmds = require("C:/Users/Arturo/Desktop/QUIZP2/cmds.js");
+const cmds = require("./cmds.js");
 
 //Mensaje inicial
 biglog('CORE Quiz','green');
