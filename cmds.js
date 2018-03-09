@@ -147,7 +147,7 @@ exports.helpCmd = rl => {
    	            	answer = answer.toLowerCase();
    	            	answer = answer.charAt(0).toUpperCase() + answer.slice(1);
    	            	if(answer === quiz.answer){
-   	            		log(`Su respuesta es correcta`);
+   	            		log(`Su respuesta es correcta.`);
    	            		biglog(`Correcta`,'green');
    	            	} else {
    	            		log(`Su respuesta es incorrecta.`);
@@ -179,7 +179,7 @@ exports.helpCmd = rl => {
         const playOne = () => {
 
           if (toBeResolved.length <= 0){
-        	log(`No hay nada más que preguntar`);
+        	log(`No hay nada más que preguntar.`);
         	log(`Fin del juego. El número de aciertos es ` + score);
         	rl.prompt();
         } else {
@@ -194,7 +194,7 @@ exports.helpCmd = rl => {
    	            	answer = answer.charAt(0).toUpperCase() + answer.slice(1);
    	            	if(answer === quiz.answer){
    	                   score++;
-   	                   log(`CORRECTO - Llevas `+ score +` aciertos`);
+   	                   log(`CORRECTO - Llevas `+ score +` aciertos.`);
                        playOne();
    	               } else {
    	               	   log(`INCORRECTO.`);
