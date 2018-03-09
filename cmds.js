@@ -150,7 +150,7 @@ exports.helpCmd = rl => {
    	            		log(`Su respuesta es correcta`);
    	            		biglog(`Correcta`,'green');
    	            	} else {
-   	            		log(`Su respuesta es incorrecta`);
+   	            		log(`Su respuesta es incorrecta.`);
    	            		biglog(`Incorrecta`,'red');
    	            	}
                     rl.prompt();
@@ -197,7 +197,7 @@ exports.helpCmd = rl => {
    	                   log(`CORRECTO - Llevas `+ score +` aciertos`);
                        playOne();
    	               } else {
-   	               	   log(`INCORRECTO`);
+   	               	   log(`INCORRECTO.`);
    	               	   log(`Fin del juego. Aciertos: `+ score);
    	               	   rl.prompt();
    	               }
