@@ -142,7 +142,7 @@ exports.helpCmd = rl => {
    			try{
                 const quiz = model.getByIndex(id);
    	            rl.question(colorize(quiz.question +': ', 'blue'),  resp => {
-   	            	if(answer.toLowerCase().trim() === quiz.resp.toLowerCase()){
+   	            	if(resp.toLowerCase().trim() === quiz.resp.toLowerCase()){
    	            		log(`Su respuesta es correcta.`);
    	            		biglog(`Correcta`,'green');
    	            	} else {
