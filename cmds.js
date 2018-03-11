@@ -142,11 +142,7 @@ exports.helpCmd = rl => {
    			try{
                 const quiz = model.getByIndex(id);
    	            rl.question(colorize(quiz.question +': ', 'blue'),  resp => {
-   	            	var answer = resp;
-   	            	answer = answer.trim();
-   	            	answer = answer.toLowerCase();
-   	            	answer = answer.charAt(0).toUpperCase() + answer.slice(1);
-   	            	if(answer === quiz.answer){
+   	            	if(answer.toLowerCase().trim() === quiz.answer.toLowerCase()){
    	            		log(`Su respuesta es correcta.`);
    	            		biglog(`Correcta`,'green');
    	            	} else {
@@ -178,7 +174,7 @@ exports.helpCmd = rl => {
         }
         const playOne = () => {
 
-          if (toBeResolved.length <= 0){
+          if (toBeResolved.length === 0){
         	log(`No hay nada más que preguntar.`);
         	log(`Fin del juego. El número de aciertos es ` + score);
         	rl.prompt();
@@ -188,11 +184,7 @@ exports.helpCmd = rl => {
         	let quiz = toBeResolved[id];
         	toBeResolved.splice(id, 1);
             rl.question(colorize(quiz.question +': ', 'blue'),  resp => {
-   	            	var answer = resp;
-   	            	answer = answer.trim();
-   	            	answer = answer.toLowerCase();
-   	            	answer = answer.charAt(0).toUpperCase() + answer.slice(1);
-   	            	if(answer === quiz.answer){
+   	            	if(resp.toLowerCase().trim() === quiz.answer.toLowerCase()){
    	                   score++;
    	                   log(`CORRECTO - Llevas `+ score +` aciertos.`);
                        playOne();
