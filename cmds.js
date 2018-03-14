@@ -1,6 +1,6 @@
 const {log, biglog, errorlog, colorize} = require("./out.js");
 
-const models = require ('./model.js');
+const {models} = require ('./model.js');
 
 const Sequelize = require('sequelize');
 
@@ -41,10 +41,10 @@ exports.helpCmd = rl => {
   });
  };
 
-  const makeQuestion = (rl,test) => {
+  const makeQuestion = (rl,text) => {
 
     return new Promise((resolve, reject) => {
-      rl.question(colorize(text, 'red'), answer =>{
+      rl.question(colorize(text + ': ', 'red'), answer =>{
         resolve(answer.trim());
       });
     });
@@ -233,10 +233,7 @@ exports.helpCmd = rl => {
       let score = 0;
 
       let toBePlayed=[];
-      models.quiz.findAll({raw: true})
-      .then(quizzes => {
-        toBePlayed=quizzes;
-      })
+      
 
       const playOne = () => {
         return new Promise((resolve, reject) => {
@@ -256,28 +253,35 @@ exports.helpCmd = rl => {
                 if(answer.toLowerCase().trim()===quiz.answer.toLowerCase()){
                   score++;
                   log(`CORRECTO - Llevas `+ score +` aciertos.`);
-                  resolve.playOne();
+                  resolve(playOne());
                 } else {
                   log(`INCORRECTO.`);
                   log(`Fin del juego. Aciertos: `+ score);
                   rl.prompt();
                 }
               })
-              .then(() => {
-       return playOne();
-      })
-     
-     .then(() => {
-      rl.prompt();
-     })
+   
            } catch(error){
       errorlog(error.message);
       rl.prompt();
        }
 
-        };
-       });
-      };
+        }
+       })
+      }
+
+      models.quiz.findAll({raw: true})
+      .then(quizzes => {
+        toBePlayed=quizzes;
+      })
+
+           .then(() => {
+       return playOne();
+      })
+     
+     .then(() => {
+      rl.prompt();
+     });
       
     };
 
