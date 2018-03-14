@@ -1,6 +1,6 @@
 const {log, biglog, errorlog, colorize} = require("./out.js");
 
-const models = require ('./model');
+const models = require ('./model.js');
 
 const Sequelize = require('sequelize');
 
