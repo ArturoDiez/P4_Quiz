@@ -204,7 +204,7 @@ exports.helpCmd = (socket, rl) => {
         return makeQuestion(rl, quiz.question+"?"+" ")
         .then(q => {
             if(q.trim().toLowerCase() === quiz.answer.trim().toLowerCase()){
-                log(socket, socket, 'Su respuesta es:', 'black');
+                log(socket, 'Su respuesta es:', 'black');
                 log(socket, 'CORRECTA', 'green');
             }else{
                 log(socket, 'Su respuesta es:', 'black');
@@ -255,7 +255,7 @@ exports.helpCmd = (socket, rl) => {
                   log(socket, `CORRECTO - Llevas `+ score +` aciertos.`);
                   resolve(playOne());
                 } else {
-                  log(socket, socket, `INCORRECTO.`);
+                  log(socket, `INCORRECTO.`);
                   log(socket, `Fin del juego. Aciertos: `+ score);
                   rl.prompt();
                 }
@@ -290,7 +290,7 @@ exports.helpCmd = (socket, rl) => {
      *
      *@param rl Objeto readline usado para implementar el CLI
      */
-     exports.creditsCmd = rl => {
+     exports.creditsCmd = (socket, rl) => {
      	log(socket, 'ARTURO','green');
      	rl.prompt();
      };
